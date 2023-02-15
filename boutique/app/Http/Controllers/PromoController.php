@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\Promos;
 
 class PromoController extends Controller
 {
@@ -13,7 +14,8 @@ class PromoController extends Controller
      */
     public function index()
     {
-        //
+        $promos = Promos::all();
+        return view('promos.index', compact('promos'));
     }
 
     /**
@@ -21,7 +23,7 @@ class PromoController extends Controller
      */
     public function create()
     {
-        //
+        return view('promos.create');
     }
 
     /**
@@ -29,7 +31,18 @@ class PromoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required',
+            'promoDate' =>'required',
+            ]);
+
+            Promos::create([
+                'nom' => $request->nom,
+                'promoDate' =>$request->promoDate,
+            ]);
+
+            return redirect()->route('promos.index')
+->with('success', 'Promo ajouté avec succès !');
     }
 
     /**
@@ -45,7 +58,8 @@ class PromoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $promo = Promos::findOrFail($id);
+        return view('promos.edit', compact('promo'));
     }
 
     /**
@@ -53,7 +67,15 @@ class PromoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $updatePromo = $request->validate([
+            'nom' => 'required',
+            'promoDate' =>'required',
+
+            ]);
+
+            Promos::whereId($id)->update($updatePromo);
+                return redirect()->route('promos.index')
+                ->with('success', 'La Promo est mis à jour avec succès !');
     }
 
     /**
@@ -61,6 +83,8 @@ class PromoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $promo = Promos::findOrFail($id);
+        $promo->delete();
+        return redirect('/promos')->with('success', 'Promo supprimé avec succès');
     }
 }

@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary rounded-pill shadow-sm">
-                                Ajouter un produit </button>
+                                Ajouter un article </button>
                         </form>
                         <!-- Fin du formulaire -->
                     </div>

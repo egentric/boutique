@@ -86,7 +86,7 @@ class ArticleController extends Controller
             'brand' => 'required',
             ]);
 
-            ArticleS::whereId($id)->update($updateArticle);
+            Articles::whereId($id)->update($updateArticle);
                 return redirect()->route('articles.index')
                 ->with('success', 'L\'article est mis à jour avec succès !');
     }

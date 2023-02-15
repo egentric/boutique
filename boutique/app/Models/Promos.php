@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Promos extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'promoDate', 'picture'];
+    protected $fillable = ['nom', 'promoDate', 'picture'];
 }
