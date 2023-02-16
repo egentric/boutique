@@ -20,16 +20,26 @@
                         <!-- Formulaire -->
                         <form method="POST" action="{{ route('articles.store') }}">
                             @csrf
-                            <div class="form-group">
-                                <label>Nom</label>
-                                <input type="text" name="nom" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <input type="text" name="description" class="form-control">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Référence</label>
+                                        <input type="text" name="size" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label>Nom</label>
+                                        <input type="text" name="nom" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" name="description" class="form-control">
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <div class="form-group">
                                         <label><span class="hidden-xs">Prix</span></label>
                                         <div class="input-group">
@@ -37,26 +47,56 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+
+                                <div class="col-sm-4">
                                     <div class="form-group mb-4">
-                                        <label>Prix Promo</label>
-                                        <input type="number" name="promoPrice" class="form-control">
+                                        <label>Catégorie</label>
+                                        <select name="range_id" class="form-select">
+                                            <option value=""> --Catégorie-- </option>
+                                            @foreach($ranges as $range)
+                                            <option value="{{ $range->id }}">{{ $range->nom }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label><span class="hidden-xs">taille</span></label>
-                                        <div class="input-group">
-                                            <input type="text" name="size" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
+
+                                <div class="col-sm-4">
                                     <div class="form-group mb-4">
                                         <label>Marque</label>
                                         <input type="text" name="brand" class="form-control">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <label>Tailles</label>
+                                        @foreach ($sizes as $size)
+                                        <div>
+                                            <input type="checkbox" id="sizeName" name="sizes[]" value="{{ $size->id }}">
+                                            <label for="{{ $size->sizeName }}">{{ $size->sizeName }}</label>
+                                        </div>
+                                        @endforeach
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-4">
+                                    <fieldset>
+                                        <label>Promos</label>
+                                        @foreach ($promos as $promo)
+                                        <div>
+                                            <input type="checkbox" id="nom" name="promos[]" value="{{ $promo->id }}">
+                                            <label for="{{ $promo->nom }}">{{ $promo->nom }}</label>
+                                        </div>
+                                        @endforeach
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-4">
+                                        <label>Prix Promo</label>
+                                        <input type="number" name="promoPrice" class="form-control">
                                     </div>
                                 </div>
                             </div>

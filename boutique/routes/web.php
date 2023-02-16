@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SizeController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\RangeController;
 use App\Http\Controllers\ArticleController;
@@ -23,3 +24,4 @@ Route::get('/', function () {
 Route::resource('articles', ArticleController::class);
 Route::resource('promos', PromoController::class);
 Route::resource('ranges', RangeController::class);
+Route::resource('sizes', SizeController::class);

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sizes;
+use App\Models\Promos;
+use App\Models\Ranges;
+use App\Models\Articles;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Models\Articles;
 
 class ArticleController extends Controller
 {
@@ -25,7 +28,10 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $ranges = Ranges::all();
+        $sizes = Sizes::all();
+        $promos = Promos::all();
+        return view('articles.create', compact('ranges', 'sizes', 'promos'));
     }
 
     /**
@@ -40,19 +46,24 @@ class ArticleController extends Controller
             'promoPrice' => 'sometimes',
             'size' => 'sometimes',
             'brand' => 'required',
-            ]);
+            'range_id' => 'required',
+        ]);
 
-           Articles::create([
-                'nom' => $request->nom,
-                'description' => $request->description,
-                'price' => $request->price,
-                'promoPrice' => $request->price,
-                'size' => $request->price,
-                'brand' => $request->brand,
-            ]);
+        $articles = Articles::create([
+            'nom' => $request->nom,
+            'description' => $request->description,
+            'price' => $request->price,
+            'promoPrice' => $request->promoPrice,
+            'size' => $request->size,
+            'brand' => $request->brand,
+            'range_id' => $request->range_id,
 
-            return redirect()->route('articles.index')
-->with('success', 'Article ajouté avec succès !');
+        ]);
+        $articles->sizes()->attach($request->sizes);
+        $articles->promos()->attach($request->promos);
+
+        return redirect()->route('articles.index')
+            ->with('success', 'Article ajouté avec succès !');
     }
 
     /**
@@ -69,7 +80,13 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $article = Articles::findOrFail($id);
-        return view('articles.edit', compact('article'));
+        $ranges = Ranges::all();
+        $sizes = Sizes::all();
+        $promos = Promos::all();
+
+        $articleRange = $article->range;
+
+        return view('articles.edit', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
     }
 
     /**
@@ -84,11 +101,15 @@ class ArticleController extends Controller
             'promoPrice' => 'sometimes',
             'size' => 'sometimes',
             'brand' => 'required',
-            ]);
+            'range_id' => 'required',
+        ]);
 
-            Articles::whereId($id)->update($updateArticle);
-                return redirect()->route('articles.index')
-                ->with('success', 'L\'article est mis à jour avec succès !');
+        Articles::whereId($id)->update($updateArticle);
+        Articles::findOrFail($id)->sizes()->sync($request->sizes);
+        Articles::findOrFail($id)->promos()->sync($request->promos);
+
+        return redirect()->route('articles.index')
+            ->with('success', 'L\'article est mis à jour avec succès !');
     }
 
     /**
@@ -97,7 +118,7 @@ class ArticleController extends Controller
     public function destroy(string $id)
     {
         $article = Articles::findOrFail($id);
-$article->delete();
-return redirect('/articles')->with('success', 'Article supprimé avec succès');
+        $article->delete();
+        return redirect('/articles')->with('success', 'Article supprimé avec succès');
     }
 }
