@@ -108,7 +108,9 @@
                                 </div>
 
                             </div>
-                            <button type="submit" class="btn btn-primary rounded-pillshadow-sm">Mettre à jour</button>
+                            <button type="submit" class="btn btn-primary btn-sm rounded-pillshadow-sm">Mettre à jour</button>
+                            <a href="{{ route('articles.show', $article->id)}}" class="btn btn-info btn-sm">Retour Fiche</a>
+
                         </form>
 
                         <!-- Fin du formulaire -->

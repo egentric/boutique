@@ -18,7 +18,7 @@
                         </div>
                         @endif
                         <!-- Formulaire -->
-                        <form method="POST" action="{{ route('articles.store') }}">
+                        <form method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-sm-4">
@@ -100,8 +100,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary rounded-pill shadow-sm">
+                            <div class="row">
+
+                            <div class="form-group col-sm-12">
+                                <label for="picture" class="form-label">Photo de l'article</label>
+                                <input type="file" class="form-control" name="picture" id="picture">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm shadow-sm">
                                 Ajouter un article </button>
+                                <a href="{{ route('articles.index')}}" class="btn btn-info btn-sm">Retour liste</a>
+
                         </form>
                         <!-- Fin du formulaire -->
                     </div>

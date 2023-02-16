@@ -47,7 +47,24 @@ class ArticleController extends Controller
             'size' => 'sometimes',
             'brand' => 'required',
             'range_id' => 'required',
+            'picture' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
+
+        $filename = "";
+        if ($request->hasFile('picture')) {
+        // On récupère le nom du fichier avec son extension, résultat $filenameWithExt : "jeanmiche.jpg"
+        $filenameWithExt = $request->file('picture')->getClientOriginalName();
+        $filenameWithExt = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // On récupère l'extension du fichier, résultat $extension : ".jpg"
+        $extension = $request->file('picture')->getClientOriginalExtension();
+        // On créer un nouveau fichier avec le nom + une date + l'extension, résultat $filename :"jeanmiche_20220422.jpg"
+        $filename = $filenameWithExt. '_' .time().'.'.$extension;
+        // On enregistre le fichier à la racine /storage/app/public/uploads, ici la méthode storeAs défini déjà le chemin/storage/app
+        $request->file('picture')->storeAs('public/uploads', $filename);
+        } else {
+        $filename = Null;
+        }
+
 
         $articles = Articles::create([
             'nom' => $request->nom,
@@ -57,6 +74,7 @@ class ArticleController extends Controller
             'size' => $request->size,
             'brand' => $request->brand,
             'range_id' => $request->range_id,
+            'picture' => $filename
 
         ]);
         $articles->sizes()->attach($request->sizes);
@@ -71,7 +89,14 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $article = Articles::findOrFail($id);
+        $ranges = Ranges::all();
+        $sizes = Sizes::all();
+        $promos = Promos::all();
+
+        $articleRange = $article->range;
+
+        return view('articles.show', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
     }
 
     /**
@@ -108,7 +133,7 @@ class ArticleController extends Controller
         Articles::findOrFail($id)->sizes()->sync($request->sizes);
         Articles::findOrFail($id)->promos()->sync($request->promos);
 
-        return redirect()->route('articles.index')
+        return redirect()->route('articles.show', [$id])
             ->with('success', 'L\'article est mis à jour avec succès !');
     }
 

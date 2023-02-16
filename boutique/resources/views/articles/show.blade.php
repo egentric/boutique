@@ -14,34 +14,41 @@
                         </div><br />
                         @endif
                         <!-- Tableau -->
+
+
+
                         <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Référence</th>
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Prix</th>
-                                    <th scope="col">Catégorie</th>
-                                    <th scope="col">Marque</th>
-                                    <th scope="col">Taille</th>
-                                    <th scope="col">Promos</th>
-                                    <th scope="col">Dates Promos</th>
-                                    <th scope="col">Prix Promo</th>
-                                    <!-- <th scope="col">Image</th> #} -->
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
                             <tbody>
-                                @foreach($articles as $article)
                                 <tr>
+                                    <th>Id</th>
                                     <td>{{$article->id}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Référence</th>
                                     <td>{{$article->size}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
                                     <td>{{$article->nom}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
                                     <td>{{$article->description}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prix</th>
                                     <td>{{$article->price}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Catégorie</th>
                                     <td>{{$article->range->nom}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Marque</th>
                                     <td>{{$article->brand}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Taille</th>
                                     <td>
                                         <ul>
                                             @foreach($article->sizes as $size)
@@ -49,6 +56,9 @@
                                             @endforeach
                                         </ul>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th>Promos</th>
                                     <td>
                                         <ul>
                                             @foreach($article->promos as $promo)
@@ -56,6 +66,10 @@
                                             @endforeach
                                         </ul>
                                     </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Dates Promos</th>
                                     <td>
                                         <ul>
                                             @foreach($article->promos as $promo)
@@ -63,10 +77,26 @@
                                             @endforeach
                                         </ul>
                                     </td>
+                                </tr>
 
+                                <tr>
+                                    <th>Prix Promo</th>
                                     <td>{{$article->promoPrice}}</td>
-                                    <!-- <td>{{$article->picture}}</td> -->
+                                </tr>
+
+                                <tr>
+                                    <th>Visuel</th>
+                                    @if($article->picture)
                                     <td>
+                                        <img src="/storage/uploads/{{$article->picture}}" alt="" width="100">
+                                    </td>
+                                    @endif
+                                </tr>
+
+
+                                <tr>
+                                    <th>Action</th>
+                                    <td><a href="{{ route('articles.index')}}" class="btn btn-info btn-sm">Retour liste</a>
                                         <a href="{{ route('articles.edit', $article->id)}}" class="btn btn-primary btn-sm">Editer</a>
                                         <form action="{{ route('articles.destroy', $article->id)}}" method="POST" style="display: inline-block">
                                             @csrf
@@ -74,9 +104,10 @@
                                             <button class="btn btn-danger btn-sm"" type=" submit">Supprimer</button>
                                     </td>
                                 </tr>
-                                @endforeach
                             </tbody>
                         </table>
+
+
                         <!-- Fin du Tableau -->
                     </div>
                 </div>
