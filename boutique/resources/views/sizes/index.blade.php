@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('content')
 <div class="container py-5">
     <div class="row">
@@ -13,6 +13,9 @@
                             {{ session()->get('success') }}
                         </div><br />
                         @endif
+
+                        <a href="{{ route('sizes.create')}}" class="btn btn-success btn-sm">Nouvelle Taille</a>
+
                         <!-- Tableau -->
                         <table class="table">
                             <thead>

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('content')
 <div class="container py-5">
     <div class="row">
@@ -27,8 +27,9 @@
                                 <label>Taille</label>
                                 <input type="text" name="sizeName" class="form-control" value="{{ $size->sizeName }}">
                             </div>
-                            
-                            <button type="submit" class="btn btn-primary rounded-pillshadow-sm">Mettre à jour</button>
+                            <br>
+                            <a href="{{ route('sizes.index')}}" class="btn btn-info btn-sm">Retour liste</a>
+                            <button type="submit" class="btn btn-primary btn-sm rounded-pillshadow-sm">Mettre à jour</button>
                         </form>
 
                         <!-- Fin du formulaire -->

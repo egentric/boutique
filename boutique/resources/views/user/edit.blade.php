@@ -1,6 +1,5 @@
-@extends('layout')
-@section('title')
-Mon Compte
+@extends('layouts.app')
+
 @section('content')
 <div class="container py-5">
     <div class="row">

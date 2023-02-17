@@ -1,9 +1,9 @@
-@extends('layout')
+@extends('layouts.app')
 @section('content')
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-10 mx-auto">
-            <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="bg-light rounded shadow-sm p-5">
                 <div class="tab-content">
                     <div id="nav-tab-card" class="tab-pane fade show active">
                         <h3>Liste des Catégories</h3>
@@ -13,6 +13,9 @@
                             {{ session()->get('success') }}
                         </div><br />
                         @endif
+
+                        <a href="{{ route('ranges.create')}}" class="btn btn-success btn-sm">Nouvelle catégorie</a>
+
                         <!-- Tableau -->
                         <table class="table">
                             <thead>

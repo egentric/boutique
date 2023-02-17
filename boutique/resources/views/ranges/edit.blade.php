@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('content')
 <div class="container py-5">
     <div class="row">
@@ -28,8 +28,9 @@
                                 <input type="text" name="nom" class="form-control" value="{{ $range->nom }}">
                             </div>
                             
-                            <button type="submit" class="btn btn-primary rounded-pillshadow-sm">Mettre à jour</button>
-                        </form>
+                            <br>
+                            <a href="{{ route('ranges.index')}}" class="btn btn-info btn-sm">Retour liste</a>
+                            <button type="submit" class="btn btn-primary btn-sm rounded-pillshadow-sm">Mettre à jour</button>                        </form>
 
                         <!-- Fin du formulaire -->
                     </div>
