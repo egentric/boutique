@@ -35,13 +35,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Combinaison</a>
+                            <a class="nav-link" href="{{ route('indexCombi') }}">Combinaison</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Gilet stabilisateur</a>
+                            <a class="nav-link" href="{{ route('indexStab') }}">Gilet stabilisateur</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Détendeur</a>
+                            <a class="nav-link" href="{{ route('indexDet') }}">Détendeur</a>
                         </li>
                     </ul>
 

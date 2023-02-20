@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sizes;
+use App\Models\Promos;
+use App\Models\Ranges;
 use App\Models\Articles;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,6 +29,60 @@ class HomeController extends Controller
     public function index()
     {
         $articles = Articles::all();
-        return view('home', compact('articles'));
+        return view('home/indexStab', compact('articles'));
+    }
+
+    public function indexStab()
+    {
+        $articles = Articles::all();
+        return view('home/indexStab', compact('articles'));
+    }
+
+    public function showStab(string $id)
+    {
+        $article = Articles::findOrFail($id);
+        $ranges = Ranges::all();
+        $sizes = Sizes::all();
+        $promos = Promos::all();
+
+        $articleRange = $article->range;
+
+        return view('home/showStab', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
+    }
+
+    public function indexDet()
+    {
+        $articles = Articles::all();
+        return view('home/indexDet', compact('articles'));
+    }
+
+    public function showDet(string $id)
+    {
+        $article = Articles::findOrFail($id);
+        $ranges = Ranges::all();
+        $sizes = Sizes::all();
+        $promos = Promos::all();
+
+        $articleRange = $article->range;
+
+        return view('articles.showDet', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
+    }
+
+    public function indexCombi()
+    {
+        $articles = Articles::all();
+        return view('home/indexCombi', compact('articles'));
+    }
+
+    public function showCombi(string $id)
+    {
+        $article = Articles::findOrFail($id);
+        $ranges = Ranges::all();
+        $sizes = Sizes::all();
+        $promos = Promos::all();
+
+        $articleRange = $article->range;
+
+        return view('articles.showCombi', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
     }
 }

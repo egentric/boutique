@@ -34,3 +34,19 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/users', UserController::class)->except('index', 'create', 'store');
+
+
+Route::get('/giletstabilisateur', [App\Http\Controllers\HomeController::class, 'indexStab'])->name('indexStab');
+Route::get('/vuegiletstabilisateur', [App\Http\Controllers\HomeController::class, 'showStab'])->name('showStab');
+
+Route::get('/combinaison', [App\Http\Controllers\HomeController::class, 'indexCombi'])->name('indexCombi');
+
+Route::get('/detendeur', [App\Http\Controllers\HomeController::class, 'indexDet'])->name('indexDet');
+
+// Route::get('/articles', [App\Http\Controllers\HomeController::class, 'ShowStab'])->name('articlesGiletStabilisateur');
+
+// Route::get('/articles', [App\Http\Controllers\HomeController::class, 'indexCombi'])->name('Combinaisons');
+// Route::get('/articles', [App\Http\Controllers\HomeController::class, 'ShowCombi'])->name('Combinaison');
+
+// Route::get('/articles', [App\Http\Controllers\HomeController::class, 'indexDet'])->name('Detendeurs');
+// Route::get('/articles', [App\Http\Controllers\HomeController::class, 'ShowDet'])->name('Detendeur');
