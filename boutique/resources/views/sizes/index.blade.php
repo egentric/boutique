@@ -3,7 +3,7 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-10 mx-auto">
-            <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="cardTrans rounded shadow-sm p-5">
                 <div class="tab-content">
                     <div id="nav-tab-card" class="tab-pane fade show active">
                         <h3>Liste des Tailles</h3>
@@ -14,7 +14,7 @@
                         </div><br />
                         @endif
 
-                        <a href="{{ route('sizes.create')}}" class="btn btn-success btn-sm">Nouvelle Taille</a>
+                        <a href="{{ route('sizes.create')}}" class="btn btn-success btn-sm mb-4">Nouvelle Taille</a>
 
                         <!-- Tableau -->
                         <table class="table">

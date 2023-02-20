@@ -25,9 +25,10 @@
                                 <input type="text" name="sizeName" class="form-control">
                             </div>
                            
-                            <button type="submit" class="btn btn-primary rounded-pill shadow-sm">
+                            <button type="submit" class="btn btn-primary btn-sm mt-3 rounded shadow-sm">
                                 Ajouter une taille </button>
-                        </form>
+                                <a href="{{ route('sizes.index')}}" class="btn btn-info btn-sm mt-3">Retour liste</a>
+                            </form>
                         <!-- Fin du formulaire -->
                     </div>
                 </div>

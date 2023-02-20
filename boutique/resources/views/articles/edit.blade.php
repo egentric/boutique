@@ -3,7 +3,7 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-7 mx-auto">
-            <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="cardTrans rounded shadow-sm p-5">
                 <div class="tab-content">
                     <div id="nav-tab-card" class="tab-pane fade show active">
                         <h3>Editer un article</h3>
@@ -20,7 +20,7 @@
                         <!-- Formulaire -->
 
                         <!-- Formulaire -->
-                        <form method="post" action="{{ route('articles.update', $article->id) }}">
+                        <form method="post" action="{{ route('articles.update', $article->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="row">
@@ -106,13 +106,20 @@
                                         <input type="number" name="promoPrice" class="form-control" value="{{ $article->promoPrice }}">
                                     </div>
                                 </div>
+                                <div class="row mt-3">
 
+                                    <div class="form-group col-sm-12">
+                                        <label for="picture" class="form-label">Photo de l'article</label>
+                                        <input type="file" class="form-control" name="picture" id="picture">
+                                        </div>
+                                    </div>
+        
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm rounded-pillshadow-sm">Mettre à jour</button>
-                            <a href="{{ route('articles.show', $article->id)}}" class="btn btn-info btn-sm">Retour Fiche</a>
+                            <button type="submit" class="btn btn-primary btn-sm rounded-pillshadow-sm mt-3">Mettre à jour</button>
+                            <a href="{{ route('articles.show', $article->id)}}" class="btn btn-info btn-sm mt-3">Retour Fiche</a>
 
                         </form>
-
+                    </div>
                         <!-- Fin du formulaire -->
                     </div>
                 </div>

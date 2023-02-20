@@ -3,7 +3,7 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-7 mx-auto">
-            <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="cardTrans rounded shadow-sm p-5">
                 <div class="tab-content">
                     <div id="nav-tab-card" class="tab-pane fade show active">
                         <h3> Ajouter un Article</h3>
@@ -100,16 +100,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mt-3">
 
                             <div class="form-group col-sm-12">
                                 <label for="picture" class="form-label">Photo de l'article</label>
                                 <input type="file" class="form-control" name="picture" id="picture">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-sm shadow-sm">
+                            <button type="submit" class="btn btn-primary btn-sm shadow-sm mt-3">
                                 Ajouter un article </button>
-                                <a href="{{ route('articles.index')}}" class="btn btn-info btn-sm">Retour liste</a>
+                                <a href="{{ route('articles.index')}}" class="btn btn-info btn-sm mt-3">Retour liste</a>
 
                         </form>
                         <!-- Fin du formulaire -->

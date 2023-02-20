@@ -100,7 +100,7 @@ class UserController extends Controller
         $user->save();
 
         //on redirige sur la page précédente
-        return redirect()->route('/')
+        return back()
             ->with('message', 'Le compte a bien été modifié');
     }
 

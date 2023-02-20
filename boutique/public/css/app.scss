@@ -4,22 +4,46 @@
 * {
     margin: 0;
     padding: 0;
-  }
-  
-  // VARIABLES
-  // ================================================================
-  
-  $blue: rgb(126, 202, 218);
-  $blueF: rgb(20, 60, 121);
-  
-  // GLOBAL
-  // ================================================================
-  
-  body {
-    background-color: $blue;
-  }
+}
 
-  h3{
+// VARIABLES
+// ================================================================
+
+$blue: rgb(191, 233, 241);
+$blueF: rgb(20, 60, 121);
+$WhiteTrans: rgba(255, 255, 255, 0.7);
+
+// GLOBAL
+// ================================================================
+
+body {
+    background-color: $blue;
+
+    .visiteur {
+        background-image: url(../storage/fish-288988.jpg);
+        // background-attachment: fixed;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+
+    @media screen and (max-width: 1024px) {
+
+        /* Le traitement est ici spécifique à l'image */
+        img.fondecran {
+            left: 50%;
+            margin-left: -512px;
+            /* 50% */
+        }
+    }
+}
+
+
+
+h3 {
     color: $blueF;
-  }
-    
+}
+
+.cardTrans {
+    background-color: $WhiteTrans !important;
+}

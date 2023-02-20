@@ -3,10 +3,10 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-10 mx-auto">
-            <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="cardTrans rounded shadow-sm p-5">
                 <div class="tab-content">
                     <div id="nav-tab-card" class="tab-pane fade show active">
-                        <h3>Liste des Articles</h3>
+                        <h3>Article</h3>
 
                         @if(session()->get('success'))
                         <div class="alert alert-success">

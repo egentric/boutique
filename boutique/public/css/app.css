@@ -1,12 +1,33 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  background-color: rgb(126, 202, 218);
+  background-color: rgb(191, 233, 241);
+}
+body .visiteur {
+  background-image: url(../storage/fish-288988.jpg);
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+@media screen and (max-width: 1024px) {
+  body {
+    /* Le traitement est ici spécifique à l'image */
+  }
+  body img.fondecran {
+    left: 50%;
+    margin-left: -512px;
+    /* 50% */
+  }
 }
 
 h3 {
   color: rgb(20, 60, 121);
+}
+
+.cardTrans {
+  background-color: rgba(255, 255, 255, 0.7) !important;
 }/*# sourceMappingURL=app.css.map */

@@ -118,8 +118,8 @@ class ArticleController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $updateArticle = $request->validate([
+{
+    $updateArticle = $request->validate([
             'nom' => 'required',
             'description' => 'required',
             'price' => 'required',
@@ -127,7 +127,26 @@ class ArticleController extends Controller
             'size' => 'sometimes',
             'brand' => 'required',
             'range_id' => 'required',
+            'picture' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg'
         ]);
+
+        $filename = "";
+        if ($request->hasFile('picture')) {
+        // On récupère le nom du fichier avec son extension, résultat $filenameWithExt : "jeanmiche.jpg"
+        $filenameWithExt = $request->file('picture')->getClientOriginalName();
+        $filenameWithExt = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // On récupère l'extension du fichier, résultat $extension : ".jpg"
+        $extension = $request->file('picture')->getClientOriginalExtension();
+        // On créer un nouveau fichier avec le nom + une date + l'extension, résultat $filename :"jeanmiche_20220422.jpg"
+        $filename = $filenameWithExt. '_' .time().'.'.$extension;
+        // On enregistre le fichier à la racine /storage/app/public/uploads, ici la méthode storeAs défini déjà le chemin/storage/app
+        $request->file('picture')->storeAs('public/uploads', $filename);
+        $updateArticle['picture'] = $filename;
+         }
+         //else {
+        // $filename = Null;
+        // }
+
 
         Articles::whereId($id)->update($updateArticle);
         Articles::findOrFail($id)->sizes()->sync($request->sizes);

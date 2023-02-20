@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appVisiteur')
 
 @section('content')
 <div class="container">
@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div  role="alert">
+                        <div role="alert">
                             {{ session('status') }}
                         </div>
                     @endif

@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts..appVisiteur')
 
 @section('content')
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-7 mx-auto">
-            <div class="bg-white rounded-lg shadow-sm p-5">
+            <div class="cardTrans rounded shadow-sm p-5">
                 <div class="tab-content">
                     <div id="nav-tab-card" class="tab-pane fade show active">
                         <h3>Mon Compte</h3>
@@ -89,7 +89,7 @@
                         <form action="{{route('users.destroy', $user)}}" method="post">
                             @CSRF
                             @method('delete')
-                            <button type="submit" class="btn btn-danger">Supprimer le compte</button>
+                            <button type="submit" class=" mt-3 btn btn-danger">Supprimer le compte</button>
                         </form>
 
                         <!-- Fin du formulaire -->
