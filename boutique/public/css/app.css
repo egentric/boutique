@@ -9,9 +9,11 @@ body {
 }
 body .visiteur {
   background-image: url(../storage/fish-288988.jpg);
-  height: 100vh;
+  background-attachment: fixed;
+  height: 100%;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 @media screen and (max-width: 1024px) {
   body {
@@ -26,6 +28,7 @@ body .visiteur {
 
 h3 {
   color: rgb(20, 60, 121);
+  text-align: center;
 }
 
 .cardTrans {

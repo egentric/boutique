@@ -6,7 +6,7 @@
             <div class="cardTrans rounded shadow-sm p-5">
                 <div class="tab-content">
                     <div id="nav-tab-card" class="tab-pane fade show active">
-                        <h3>Liste des Gilets stabilisateur</h3>
+                        <h3>Liste des Combinaisons</h3>
                         <div class="row  justify-content-between ">
                             @foreach($articles as $article)
                             @if($article->range->nom === 'Combinaison')

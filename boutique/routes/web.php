@@ -37,7 +37,7 @@ Route::resource('/users', UserController::class)->except('index', 'create', 'sto
 
 
 Route::get('/giletstabilisateur', [App\Http\Controllers\HomeController::class, 'indexStab'])->name('indexStab');
-Route::get('/vuegiletstabilisateur', [App\Http\Controllers\HomeController::class, 'showStab'])->name('showStab');
+Route::get('/vuegiletstabilisateur/{article}', [App\Http\Controllers\HomeController::class, 'showStab'])->name('showStab');
 
 Route::get('/combinaison', [App\Http\Controllers\HomeController::class, 'indexCombi'])->name('indexCombi');
 

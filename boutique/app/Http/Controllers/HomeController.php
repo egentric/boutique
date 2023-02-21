@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $articles = Articles::all();
-        return view('home/indexStab', compact('articles'));
+        return view('home', compact('articles'));
     }
 
     public function indexStab()
