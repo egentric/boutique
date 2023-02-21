@@ -1,8 +1,8 @@
-@extends('layouts.appVisiteur')
+@extends('layouts.appAuth')
 
 @section('content')
 <div class="container py-5">
-    <div class="row justify-content-center ">
+    <div class="row justify-content-center  d-flex align-items-center">
         <div class="col-md-8">
             <div class="card cardTrans">
                 <div class="card-header">{{ __('Login') }}</div>

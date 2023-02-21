@@ -1,4 +1,4 @@
-@extends('layouts.appVisiteur')
+@extends('layouts.appAuth')
 
 @section('content')
 <div class="container py-5">
