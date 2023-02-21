@@ -3,7 +3,7 @@
 @section('content')
 
 @if (!session('connected'))
-<div class="container">
+<div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="alert alert-success">
@@ -26,8 +26,9 @@
 </div>
 @endif
 
-<div class="container bg-white" height='550px'>
-    <div class="row justify-content-center">
+<div class="container py-5">
+    <div class="row justify-content-center rounded bg-white">
+        
         <div>
             <h2 align='center'>Promotions</h2>
         </div>
@@ -68,6 +69,33 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+        </div>
+    </div>
+<div>
+
+<div class="container py-5"">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="cardTrans rounded shadow-sm p-5">
+                <div class="tab-content">
+                    <div id="nav-tab-card" class="tab-pane fade show active">
+                        <h3>Articles</h3>
+                        <div class="row  justify-content-between ">
+                            @foreach($articles as $article)
+                                <div class="card mb-5" style="width: 18rem;">
+                                <img src="/storage/uploads/{{$article->picture}}" alt="" width="100" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$article->nom}}</h5>
+                                    <p class="card-text">{{$article->price}} €</p>
+                                    <a href="{{ route('showCombi', $article->id)}}" class="btn btn-primary btn-sm">Détail</a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

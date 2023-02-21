@@ -15,7 +15,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{$article->nom}}</h5>
                                     <p class="card-text">{{$article->price}} €</p>
-                                    <a href="{{-- {{ route('articles.showStab', $article->id)}} --}}" class="btn btn-primary btn-sm">Détail</a>
+                                    <a href="{{ route('showCombi', $article->id)}}" class="btn btn-primary btn-sm">Détail</a>
                                 </div>
                             </div>
                             @endif

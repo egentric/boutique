@@ -65,7 +65,7 @@ class HomeController extends Controller
 
         $articleRange = $article->range;
 
-        return view('articles.showDet', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
+        return view('home/showDet', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
     }
 
     public function indexCombi()
@@ -83,6 +83,6 @@ class HomeController extends Controller
 
         $articleRange = $article->range;
 
-        return view('articles.showCombi', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
+        return view('home/showCombi', compact('article', 'ranges', 'articleRange', 'sizes', 'promos'));
     }
 }

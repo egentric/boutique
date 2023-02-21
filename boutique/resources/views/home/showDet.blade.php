@@ -24,7 +24,7 @@
                 <div class="mt-5">
                     <form>
                         <div class="form-row align-items-center">
-                            <div class="input-group mb-3">
+                            {{-- <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01">Taille Disponible</label>
                                 </div>
@@ -34,7 +34,7 @@
                                     <option value="{{ $size->sizeName }}">{{ $size->sizeName }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="col-auto my-1">
                                 <button type="submit" class="btn btn-primary btn-sm">Panier</button>
                             </div>
