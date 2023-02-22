@@ -23,18 +23,20 @@ use App\Http\Controllers\ArticleController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::middleware('auth')->group(function(){
 
 Route::resource('articles', ArticleController::class);
 Route::resource('promos', PromoController::class);
 Route::resource('ranges', RangeController::class);
 Route::resource('sizes', SizeController::class);
+Route::resource('/users', UserController::class)->except('index', 'create', 'store');
+
+});
+
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('/users', UserController::class)->except('index', 'create', 'store');
-
 
 Route::get('/giletstabilisateur', [App\Http\Controllers\HomeController::class, 'indexStab'])->name('indexStab');
 Route::get('/vuegiletstabilisateur/{article}', [App\Http\Controllers\HomeController::class, 'showStab'])->name('showStab');
