@@ -16,6 +16,7 @@
 
     <!-- Scripts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href=" {{ asset('css/app.css') }}">
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 </head>
@@ -43,6 +44,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('indexDet') }}">Détendeur</a>
                         </li>
+   
                     </ul>
 
 
@@ -70,7 +72,6 @@
                                 <img src="/storage/uploads/{{ Auth::user()->picture }}" alt="" width="40"> {{ Auth::user()->pseudo }}
                             </a>
 
-
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                                 <a class="dropdown-item" href="{{ route('users.edit', $user = Auth::user())}}">Mon compte</a>
@@ -90,6 +91,10 @@
                                     @csrf
                                 </form>
                             </div>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ route('dashboard') }}">
+                                <h4><i class="bi bi-speedometer2"></i></h4></a>
                         </li>
                         @endguest
                     </ul>

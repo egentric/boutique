@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\RangeController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::resource('promos', PromoController::class);
 Route::resource('ranges', RangeController::class);
 Route::resource('sizes', SizeController::class);
 Route::resource('/users', UserController::class)->except('index', 'create', 'store');
+route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
 });
 
