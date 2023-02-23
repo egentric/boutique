@@ -21,16 +21,19 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $article = Articles::all();
-        $ranges = Ranges::all();
-        $sizes = Sizes::all();
-        $promos = Promos::all();
-        $users = User::all();
+        $articles = Articles::orderBy('created_at', 'desc')->take(3)->get();
+        $ranges = Ranges::orderBy('created_at', 'desc')->take(3)->get();
+        $sizes = Sizes::orderBy('created_at', 'desc')->take(3)->get();
+        $promos = Promos::orderBy('created_at', 'desc')->take(3)->get();
+
+        $users = User::orderBy('created_at', 'desc')->take(3)->get();
         $role = Role::all();
 
-        return view('dashboard', compact('article', 'ranges', 'users', 'sizes', 'promos', 'role'));
+        return view('dashboard', compact('articles', 'ranges', 'users', 'sizes', 'promos', 'role'));
 
     }
+
+
 
     /**
      * Show the form for creating a new resource.

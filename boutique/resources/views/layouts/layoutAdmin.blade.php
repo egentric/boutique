@@ -95,18 +95,18 @@
                         class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline">Menu</span>
                     </a>
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
-                        id="menu">
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
                             <a href="{{ route('home')}}" class="nav-link align-middle px-0 text-light">
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Accueil</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('dashboard')}}" data-bs-toggle="collapse"
-                                class="nav-link px-0 align-middle text-light">
-                                <i class="fs-4 bi-speedometer2"></i> <span
-                                    class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+                            <a href="{{ route('dashboard') }}"  class="nav-link px-0 align-middle text-light">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                            </a>
+
+                                    @if ((Auth::user()->role->role) === 'admin')       
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="{{ route('articles.index')}}" class="nav-link px-0 text-light"><i
@@ -133,9 +133,10 @@
 
 
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle text-light">
+                            <a href="{{ route('users.index')}}" class="nav-link px-0 align-middle text-light">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Utilisateur</span>
                             </a>
+                            @endif
                         </li>
                         <li>
                             <a href="{{ route('users.edit', $user = Auth::user())}}"

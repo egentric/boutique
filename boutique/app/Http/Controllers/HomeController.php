@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articles = Articles::all();
+        $articles = Articles::orderBy('created_at', 'desc')->take(6)->get();
         return view('home', compact('articles'));
     }
 

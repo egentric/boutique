@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Role;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,7 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        
+        return view('user.index', compact('users'));
+
     }
 
     /**
@@ -40,7 +44,11 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $role = Role::all();
+
+
+        return view('user.show', compact('user', 'role'));
     }
 
     /**

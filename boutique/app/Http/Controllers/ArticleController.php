@@ -20,6 +20,36 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Articles::all();
+        $ranges = Ranges::all();
+        $promos = Promos::all();
+
+
+        return view('articles.index', compact('articles', 'ranges'));
+    }
+
+    public function filtrerRange(Request $request)
+    {
+        // récup toutes les catégories
+        $ranges = Ranges::all();
+        // je récupére l'id sélectionner dans le filtre
+        $range = $request->input('range');
+
+        // dd($range);
+        $articles = Articles::where('range_id', $range)->orderBy('range_id', 'desc')->get();
+        
+        return view('articles.index', compact('articles', 'ranges'));
+    }
+
+    public function filtrerMarque(Request $request)
+    {
+        // récup toutes les infos article
+        $Articles = Articles::all();
+        // je récupére la marque sélectionner dans le filtre
+        $article = $request->input('brand');
+
+        // dd($range);
+        $articles = Articles::where('brand', $article)->orderBy('brand', 'desc')->get();
+        
         return view('articles.index', compact('articles'));
     }
 

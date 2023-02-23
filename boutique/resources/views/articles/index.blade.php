@@ -23,18 +23,81 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    {{-- <th scope="col">#</th> --}}
                                     <th scope="col">Référence</th>
                                     <th scope="col">Nom</th>
-                                    {{-- <th scope="col">Description</th> --}}
-                                    {{-- <th scope="col">Prix</th> --}}
-                                    <th scope="col">Catégorie</th>
-                                    <th scope="col">Marque</th>
-                                    {{-- <th scope="col">Taille</th> --}}
-                                    <th scope="col">Promos</th>
-                                    {{-- <th scope="col">Dates Promos</th> --}}
-                                    {{-- <th scope="col">Prix Promo</th> --}}
-                                    <!-- <th scope="col">Image</th> #} -->
+{{-- Sélection filtre catégorie --}}
+                                    <th scope="col">
+                                        <ul class="navbar-nav ms-auto">
+                                            <li class="nav-item dropdown">
+                                        
+                                        <form method="POST" action="{{ route('articles.filtrerRange') }}">
+                                            @csrf
+                                            <div class="dropdown">
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    Catégorie
+                                                </a>
+                                                
+                                              <div class="dropdown-menu" aria-labelledby="rangeDropdown">
+                                                @foreach($ranges as $range)
+                                                  <button class="dropdown-item" type="submit" name="range" value="{{ $range->id }}">{{ $range->nom }}</button>
+                                                @endforeach
+                                              </div>
+                                            </div>
+                                          </form>
+                                         
+                                        </li>
+                                    </ul></th>
+
+ {{-- Sélection filtre Marque --}}
+                                   
+                                    <th scope="col">
+                                        <ul class="navbar-nav ms-auto">
+                                            <li class="nav-item dropdown">
+                                        
+                                        <form method="POST" action="{{ route('articles.filtrerMarque') }}">
+                                            @csrf
+                                                <div class="dropdown">
+                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                        Marque
+                                                    </a>
+                                                    
+                                                    <div class="dropdown-menu" aria-labelledby="rangeDropdown">
+                                                        @foreach($articles as $article)
+                                                        <button class="dropdown-item" type="submit" name="promo" value="{{ $article->brand }}">{{ $article->brand }}</button>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                          </form>
+                                         
+                                            </li>
+                                        </ul>
+                                    </th>
+
+ {{-- Sélection filtre promo --}}
+                                   
+                                    <th scope="col">
+                                        <ul class="navbar-nav ms-auto">
+                                            <li class="nav-item dropdown">
+                                        
+                                            {{-- <form method="POST" action="{{ route('articles.filtrerPromo') }}">
+                                                @csrf --}}
+                                                {{-- <div class="dropdown">
+                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> --}}
+                                                        Promos
+                                                    {{-- </a>
+                                                    
+                                                    <div class="dropdown-menu" aria-labelledby="rangeDropdown">
+                                                        @foreach($promos as $promo)
+                                                        <button class="dropdown-item" type="submit" name="promo" value="{{ $promo->id }}">{{ $promo->nom }}</button>
+                                                        @endforeach
+                                                    </div>
+                                                </div> --}}
+                                          {{-- </form> --}}
+                                         
+                                             </li>
+                                        </ul>
+                                    </th>
+                                    
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
