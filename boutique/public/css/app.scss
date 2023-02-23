@@ -37,6 +37,9 @@ body {
             /* 50% */
         }
     }
+
+
+
 }
 
 
@@ -48,4 +51,8 @@ h3 {
 
 .cardTrans {
     background-color: $WhiteTrans !important;
+}
+
+.nav-link:hover{
+     color:rgb(175, 172, 172)   !important;
 }

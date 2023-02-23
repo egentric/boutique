@@ -1,6 +1,6 @@
-@extends('layouts..appVisiteur')
-
+@extends('layouts.layoutAdmin')
 @section('content')
+
 
 <div class="container py-5">
     <div class="row">

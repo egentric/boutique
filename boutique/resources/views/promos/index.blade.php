@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.layoutAdmin')
 @section('content')
-@if ((Auth::user()->role->role) === 'admin')
+
 
 <div class="container py-5">
     <div class="row">
@@ -54,5 +54,5 @@
             </div>
         </div>
     </div>
-    @endif
+
 @endsection
