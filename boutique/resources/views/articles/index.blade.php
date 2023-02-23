@@ -62,8 +62,8 @@
                                                     </a>
                                                     
                                                     <div class="dropdown-menu" aria-labelledby="rangeDropdown">
-                                                        @foreach($articles as $article)
-                                                        <button class="dropdown-item" type="submit" name="promo" value="{{ $article->brand }}">{{ $article->brand }}</button>
+                                                        @foreach($articles->pluck('brand')->unique() as $brand)
+                                                        <button class="dropdown-item" type="submit" name="brand" value="{{ $brand }}">{{ $brand }}</button>
                                                         @endforeach
                                                     </div>
                                                 </div>
@@ -79,26 +79,30 @@
                                         <ul class="navbar-nav ms-auto">
                                             <li class="nav-item dropdown">
                                         
-                                            {{-- <form method="POST" action="{{ route('articles.filtrerPromo') }}">
-                                                @csrf --}}
-                                                {{-- <div class="dropdown">
-                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> --}}
+                                            <form method="POST" action="{{ route('articles.filtrerPromo') }}">
+                                                @csrf
+                                                <div class="dropdown">
+                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                         Promos
-                                                    {{-- </a>
+                                                    </a>
                                                     
                                                     <div class="dropdown-menu" aria-labelledby="rangeDropdown">
                                                         @foreach($promos as $promo)
                                                         <button class="dropdown-item" type="submit" name="promo" value="{{ $promo->id }}">{{ $promo->nom }}</button>
                                                         @endforeach
                                                     </div>
-                                                </div> --}}
-                                          {{-- </form> --}}
-                                         
+                                                </div>
+                                          </form>
+
                                              </li>
                                         </ul>
+
+
                                     </th>
                                     
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Action <a href="{{ route('articles.index')}}" class="btn btn-sm" style="background-color: var(--bs-danger-bg-subtle); --bs-border-color: var(--bs-danger-border-subtle); color: var(--bs-danger-text);">reset filtre</a>
+                                    </th>
+
                                 </tr>
                             </thead>
                             <tbody>

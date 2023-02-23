@@ -33,7 +33,9 @@ Route::resource('sizes', SizeController::class);
 Route::resource('/users', UserController::class)->except('create');
 route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::post('/articles/filtrerrange', [App\Http\Controllers\ArticleController::class, 'filtrerRange'])->name('articles.filtrerRange');
+
 Route::post('/articles/filtrermarque', [App\Http\Controllers\ArticleController::class, 'filtrerMarque'])->name('articles.filtrerMarque');
+
 Route::post('/articles/filtrerpromo', [App\Http\Controllers\ArticleController::class, 'filtrerPromo'])->name('articles.filtrerPromo');
 });
 

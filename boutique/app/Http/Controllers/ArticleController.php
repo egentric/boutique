@@ -8,6 +8,7 @@ use App\Models\Ranges;
 use App\Models\Articles;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
@@ -24,11 +25,14 @@ class ArticleController extends Controller
         $promos = Promos::all();
 
 
-        return view('articles.index', compact('articles', 'ranges'));
+        return view('articles.index', compact('articles', 'ranges', 'promos'));
     }
 
     public function filtrerRange(Request $request)
     {
+        $promos = Promos::all();
+        $articles = Articles::all();
+
         // récup toutes les catégories
         $ranges = Ranges::all();
         // je récupére l'id sélectionner dans le filtre
@@ -37,21 +41,46 @@ class ArticleController extends Controller
         // dd($range);
         $articles = Articles::where('range_id', $range)->orderBy('range_id', 'desc')->get();
         
-        return view('articles.index', compact('articles', 'ranges'));
+        return view('articles.index', compact('articles', 'ranges', 'promos'));
     }
 
     public function filtrerMarque(Request $request)
     {
-        // récup toutes les infos article
-        $Articles = Articles::all();
+
+        $articles = Articles::all();
+        $ranges = Ranges::all();
+        $promos = Promos::all();
+
         // je récupére la marque sélectionner dans le filtre
         $article = $request->input('brand');
 
-        // dd($range);
+        // dd($article);
         $articles = Articles::where('brand', $article)->orderBy('brand', 'desc')->get();
         
-        return view('articles.index', compact('articles'));
+        return view('articles.index', compact('articles', 'ranges', 'promos'));
     }
+
+    public function filtrerPromo(Request $request)
+    {
+        // récup toutes les catégories
+        $articles = Articles::all();
+        $ranges = Ranges::all();
+        $promos = Promos::all();
+        
+        // je récupére l'id sélectionner dans le filtre
+        $promo = $request->input('promo');
+
+    // dd($promo);
+    $articles = DB::table('articles')
+    ->join('articles_promos', 'articles.id', '=', 'articles_promos.articles_id')
+    ->join('promos', 'promos.id', '=', 'articles_promos.promos_id')
+    ->where('articles_promos.promos_id', '=', $promo)
+    ->get();
+        dd($articles);
+        return view('articles.index', compact('articles', 'ranges', 'promos'));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
