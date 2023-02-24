@@ -24,20 +24,12 @@
                 <div class="mt-5">
                     <form>
                         <div class="form-row align-items-center">
-                            <div class="row">
-                                
-                                <div class="col-md-7">
-                                    <div class="input-group mb-3">
-                                    <span class="input-group-text">quantité</span></label>
-                                    <input type="number" name="quantity" class="form-control" value="">
-                                </div>
-                                </div>
-                            </div>
+                            
                             <div class="col-auto my-1">
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-cart-plus"></i> Panier</button>
+                                <a href="{{ route('add.to.cart', $article->id)}}" class="btn btn-primary btn-sm"><i class="bi bi-cart-plus"></i> Panier</button>
                             </div>
                         </div>
-                    </div>
+                    
                     </form>
                 </div>
             </div>

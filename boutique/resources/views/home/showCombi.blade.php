@@ -26,30 +26,29 @@
                         <div class="form-row align-items-center">
                             <div class="row">
                                 <div class="col-md-7">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Taille Disponible</label>
-                                </div>
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choix</option>
-                                    @foreach($article->sizes as $size)
-                                    <option value="{{ $size->sizeName }}">{{ $size->sizeName }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Taille Disponible</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01">
+                                            <option selected>Choix</option>
+                                            @foreach($article->sizes as $size)
+                                            <option value="{{ $size->sizeName }}">{{ $size->sizeName }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="input-group mb-3">
-                                    <span class="input-group-text">quantité</span></label>
-                                    <input type="number" name="quantity" class="form-control" value="">
-                                </div>
+                                        <span class="input-group-text">quantité</span></label>
+                                        <input type="number" name="quantity" class="form-control" value="">
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-auto my-1">
-                                <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-cart-plus"></i> Panier</button>
+                                <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-cart-plus"></i> Ajout Panier</button>
                             </div>
                         </div>
-                    </div>
                     </form>
                 </div>
             </div>
