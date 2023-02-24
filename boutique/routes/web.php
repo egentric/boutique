@@ -54,3 +54,12 @@ Route::get('/detendeur', [App\Http\Controllers\HomeController::class, 'indexDet'
 Route::get('/vuedetendeur/{article}', [App\Http\Controllers\HomeController::class, 'showDet'])->name('showDet');
 
 
+
+// Panier
+Route::get('cart', [ArticleController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [ArticleController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [ArticleController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [ArticleController::class, 'remove'])->name('remove.from.cart');
+
+
+

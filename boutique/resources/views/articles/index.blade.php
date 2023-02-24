@@ -76,15 +76,15 @@
  {{-- Sélection filtre promo --}}
                                    
                                     <th scope="col">
-                                        <ul class="navbar-nav ms-auto">
+                                        {{-- <ul class="navbar-nav ms-auto">
                                             <li class="nav-item dropdown">
                                         
                                             <form method="POST" action="{{ route('articles.filtrerPromo') }}">
                                                 @csrf
                                                 <div class="dropdown">
-                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> --}}
                                                         Promos
-                                                    </a>
+                                                    {{-- </a>
                                                     
                                                     <div class="dropdown-menu" aria-labelledby="rangeDropdown">
                                                         @foreach($promos as $promo)
@@ -94,7 +94,7 @@
                                                 </div>
                                           </form>
 
-                                             </li>
+                                             </li> --}}
                                         </ul>
 
 

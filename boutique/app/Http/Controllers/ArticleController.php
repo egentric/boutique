@@ -60,32 +60,33 @@ class ArticleController extends Controller
         return view('articles.index', compact('articles', 'ranges', 'promos'));
     }
 
-    public function filtrerPromo(Request $request)
-    {
-        // récup toutes les catégories
-        $articles = Articles::all();
-        $ranges = Ranges::all();
-        $promos = Promos::all();
+    // public function filtrerPromo(Request $request)
+    // {
+    //     // récup toutes les catégories
+    //     $articles = Articles::all();
+    //     $ranges = Ranges::all();
+    //     $promos = Promos::all();
         
-        // je récupére l'id sélectionner dans le filtre
-        $promo = $request->input('promo');
+    //     // je récupére l'id sélectionner dans le filtre
+    //     $promo = $request->input('promo');
 
-    // dd($promo);
+    // // dd($promo);
     // $articles = DB::table('articles')
     // ->join('articles_promos', 'articles.id', '=', 'articles_promos.articles_id')
     // ->join('promos', 'promos.id', '=', 'articles_promos.promos_id')
+    // ->join('ranges', 'articles.range_id', '=', 'ranges.id')
     // ->where('articles_promos.promos_id', '=', $promo)
     // ->get();
 
-    $articles = DB::table('articles as a')
-    ->join('articles_promos', 'a.id', '=', 'articles_promos.articles_id')
-    ->join('promos', 'promos.id', '=', 'articles_promos.promos_id')
-    ->join('ranges', 'a.range_id', '=', 'ranges.id')
-    ->where('articles_promos.promos_id', '=', $promo)
-    ->get();
-        // dd($articles);
-        return view('articles.index', compact('articles', 'ranges', 'promos'));
-    }
+    // // $articles = DB::table('articles as a')
+    // // ->join('articles_promos', 'a.id', '=', 'articles_promos.articles_id')
+    // // ->join('promos', 'promos.id', '=', 'articles_promos.promos_id')
+    // // ->join('ranges', 'a.range_id', '=', 'ranges.id')
+    // // ->where('articles_promos.promos_id', '=', $promo)
+    // // ->get();
+    //     dd($articles);
+    //     return view('articles.index', compact('articles', 'ranges', 'promos'));
+    // }
 
 
 
