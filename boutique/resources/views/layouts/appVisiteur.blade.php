@@ -80,7 +80,7 @@
                                 <a class="dropdown-item" href="{{ route('promos.index')}}">Promos</a>
                                 <a class="dropdown-item" href="{{ route('ranges.index')}}">Catégories</a>
                                 <a class="dropdown-item" href="{{ route('sizes.index')}}">Tailles</a>
-
+                                <a class="dropdown-item" href="{{ route('users.index')}}">Utilisateurs</a>
                                 @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

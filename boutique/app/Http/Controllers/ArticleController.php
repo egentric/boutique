@@ -71,12 +71,19 @@ class ArticleController extends Controller
         $promo = $request->input('promo');
 
     // dd($promo);
-    $articles = DB::table('articles')
-    ->join('articles_promos', 'articles.id', '=', 'articles_promos.articles_id')
+    // $articles = DB::table('articles')
+    // ->join('articles_promos', 'articles.id', '=', 'articles_promos.articles_id')
+    // ->join('promos', 'promos.id', '=', 'articles_promos.promos_id')
+    // ->where('articles_promos.promos_id', '=', $promo)
+    // ->get();
+
+    $articles = DB::table('articles as a')
+    ->join('articles_promos', 'a.id', '=', 'articles_promos.articles_id')
     ->join('promos', 'promos.id', '=', 'articles_promos.promos_id')
+    ->join('ranges', 'a.range_id', '=', 'ranges.id')
     ->where('articles_promos.promos_id', '=', $promo)
     ->get();
-        dd($articles);
+        // dd($articles);
         return view('articles.index', compact('articles', 'ranges', 'promos'));
     }
 

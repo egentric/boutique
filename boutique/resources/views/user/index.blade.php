@@ -22,7 +22,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Image</th>
-                                    <th scope="col">Pseudo/th>
+                                    <th scope="col">Pseudo</th>
                                     <th scope="col">email</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Action</th>

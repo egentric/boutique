@@ -56,6 +56,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+
         return view('user/edit', ['user' => $user]);
     }
 
@@ -102,14 +103,29 @@ class UserController extends Controller
         $user->adress = $request->input('adress');
         $user->zip = $request->input('zip');
         $user->city = $request->input('city');
+        $user->role_id = $request->input('role_id');
         
-
         //on sauvegarde les changements en bdd
         $user->save();
+        
 
-        //on redirige sur la page précédente
-        return back()
-            ->with('message', 'Le compte a bien été modifié');
+       // Vérifier si l'utilisateur connecté a le rôle d'admin
+    if (Auth::user()->role->role === 'admin') {
+        // Rediriger vers la page d'index des utilisateurs
+        return redirect()->route('users.index', [$user])->with('success', 'Le compte a bien été modifié');
+    } else {
+        // Rediriger vers la page du tableau de bord
+        return view('dashboard')->with('success', 'Le compte a bien été modifié');
+    }
+
+
+
+
+
+
+
+
+
     }
 
     /**

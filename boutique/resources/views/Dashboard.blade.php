@@ -134,7 +134,7 @@
             </a>
         </div>
         <div class="col-lg-6 mx-auto">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{ route('users.index')}}">
 
                 <div class="cardTrans rounded shadow-sm p-5 ms-3 mt-3">
                     <div class="tab-content">

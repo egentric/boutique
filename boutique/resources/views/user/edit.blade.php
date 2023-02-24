@@ -37,54 +37,77 @@
                                         <label>e-mail</label>
                                         <input required type="text" name="email" class="form-control" value="{{ $user->email }}" id='email'>
                                     </div>
-                                
-                            </div>
-                            <div class="row">
-                                
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>prénom</label>
-                                        <input required type="text" name="firstName" class="form-control" value="{{ $user->firstName }}" id='firstName'>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Nom</label>
-                                        <input required type="text" name="name" class="form-control" value="{{ $user->name }}" id='name'>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label>Adresse</label>
-                                        <input required type="text" name="adress" class="form-control" value="{{ $user->adress }}" id='adress'>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>prénom</label>
+                                            <input required type="text" name="firstName" class="form-control" value="{{ $user->firstName }}" id='firstName'>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Nom</label>
+                                            <input required type="text" name="name" class="form-control" value="{{ $user->name }}" id='name'>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>  
-                            <div class="row">
-  
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <label>Code Postale</label>
-                                        <input required type="number" name="zip" class="form-control" value="{{ $user->zip }}" id='zip'>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Adresse</label>
+                                            <input required type="text" name="adress" class="form-control" value="{{ $user->adress }}" id='adress'>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label>Ville</label>
-                                        <input required type="text" name="city" class="form-control" value="{{ $user->city }}" id='city'>
+                                <div class="row">
+
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Code Postale</label>
+                                            <input required type="number" name="zip" class="form-control" value="{{ $user->zip }}" id='zip'>
+                                        </div>
                                     </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label>Ville</label>
+                                            <input required type="text" name="city" class="form-control" value="{{ $user->city }}" id='city'>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-sm-12">
+                                    <label for="picture" class="form-label">Photo de profil</label>
+                                    <input type="file" class="form-control" name="picture" id="picture">
                                 </div>
                             </div>
-                            <div class="form-group col-sm-12">
-                                <label for="picture" class="form-label">Photo de profil</label>
-                                <input type="file" class="form-control" name="picture" id="picture">
+                            <br>
+                            <div class="row">
+                            @if ((Auth::user()->role->role) === 'admin')
+                                <div class="form-group col-sm-4">
+                                    <fieldset>
+                                        <label>Role :</label>
+
+                                        <div>
+                                            <input type="radio" id="user" name="role_id" value=1 @if ($user->role_id == '1') checked @endif>
+                                            <label for="user">User</label>
+                                        </div>
+
+                                        <div>
+                                            <input type="radio" id="admin" name="role_id" value=2 @if ($user->role_id == '2') checked @endif>
+                                            <label for="admin">Admin</label>
+                                        </div>
+                                    </fieldset>
                                 </div>
-                            </div>
-<br>
-                            <button type="submit" class="btn btn-primary rounded-pillshadow-sm">Mettre à jour</button>
+                            @else
+                                <input id="user" name="role_id" type="hidden" value=1>
+                            @endif
+
+                                <div class="form-group col-sm-8">
+                                    <button type="submit" class="btn btn-primary rounded-pillshadow-sm">Mettre à jour</button>
                         </form>
 
                         <form action="{{route('users.destroy', $user)}}" method="post">
@@ -92,11 +115,12 @@
                             @method('delete')
                             <button type="submit" class=" mt-3 btn btn-danger">Supprimer le compte</button>
                         </form>
-
-                        <!-- Fin du formulaire -->
                     </div>
                 </div>
+                <!-- Fin du formulaire -->
             </div>
         </div>
     </div>
-    @endsection
+</div>
+</div>
+@endsection
