@@ -37,7 +37,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input type="text" name="description" class="form-control">
+                                    {{-- <input type="text" name="description" class="form-control"> --}}
+                                    <textarea class="ckeditor form-control" name="description"></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -120,5 +121,10 @@
             </div>
         </div>
     </div>
-
+    <script src="//cdn.ckeditor.com/4.20.2/basic/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.ckeditor').ckeditor();
+        });
+    </script>
     @endsection

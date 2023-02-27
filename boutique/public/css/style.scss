@@ -71,3 +71,29 @@
     border:10px solid transparent;
     border-bottom-color:#fff;
 }
+
+
+table {
+    // table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+
+  
+  th, td {
+    padding: 10px;
+    border-top: 1px solid rgb(115, 115, 116) !important;
+    border-bottom: 1px solid rgb(115, 115, 116)  !important;
+
+  }
+  tfoot{
+    border-bottom: 3px solid rgb(115, 115, 116) !important;
+    text-align: right !important;
+    td{
+        text-align: right !important;
+    }
+
+  }
+  thead{
+    border-top: 3px solid rgb(115, 115, 116) !important;
+  }
+}

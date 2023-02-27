@@ -86,4 +86,24 @@
   right: 50px;
   border: 10px solid transparent;
   border-bottom-color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table th, table td {
+  padding: 10px;
+  border-top: 1px solid rgb(115, 115, 116) !important;
+  border-bottom: 1px solid rgb(115, 115, 116) !important;
+}
+table tfoot {
+  border-bottom: 3px solid rgb(115, 115, 116) !important;
+  text-align: right !important;
+}
+table tfoot td {
+  text-align: right !important;
+}
+table thead {
+  border-top: 3px solid rgb(115, 115, 116) !important;
 }/*# sourceMappingURL=style.css.map */
