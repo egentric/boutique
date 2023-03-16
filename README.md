@@ -4,3 +4,6 @@ TP boutique en ligne, Laravel
 -Filtre
 -panier
 -role
+-manyToMany
+-oneToMany
+-manyToOne
