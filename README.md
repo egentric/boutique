@@ -4,7 +4,7 @@
     <ul>
       <li>Authentification ui bootstrap --auth</li>
       <li>Filtre</li>
-      <li>panier</li>
+      <li>panier tuto : https://www.itsolutionstuff.com/post/laravel-shopping-add-to-cart-with-ajax-exampleexample.html</li>
       <li>role</li>
       <li>manyToMany</li>
       <li>oneToMany</li>
